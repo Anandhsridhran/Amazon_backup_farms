@@ -1,0 +1,18 @@
+
+
+  <div class="container-fluid padded">
+    <% if @barns %>
+      <div class="row-fluid">
+        <%= render "barns/dashboard" %>	  
+      </div>
+
+      <div class="row-fluid">   
+        <%= render "barns/event_reports" %>
+      </div>
+    <% else %>
+      <div class="row-fluid">
+        <%= render "farms/dashboard" %>   
+      </div>
+    <% end %>
+  </div>
+

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  curtain: 1
+  action: MyString
+  location_configuration_id: 1
+
+two:
+  curtain: 1
+  action: MyString
+  location_configuration_id: 1

@@ -1,0 +1,68 @@
+<% if current_user.is_admin? %>
+  <div class="container-fluid padded">
+    <div class="span10"> 
+    <div class="action-nav-normal">
+      
+      <div class="row-fluid">
+        <div class="span2 action-nav-button">
+          <a href="/farms/new" title="New Farm">
+            <i class="icon-picture"></i>
+            <span>New Farm</span>
+          </a>
+          <span class="triangle-button red"><i class="icon-plus"></i></span>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="container-fluid padded">
+    <div class="row-fluid">
+      <div class="span6">
+        <div class="box">
+          <div class="box-content">
+            <table class="table table-normal">
+              <thead>
+                <tr>
+                  <td>Name</td>
+                  <td>Owner</td>
+                  <td>Address</td>
+                  <td>City</td>
+                  <td>State</td>
+                  <td>Inventory</td>
+                  <% if current_user.is_admin? %>
+                    <td></td>
+                  <% end %>
+                </tr>
+              </thead>
+              <tbody>
+                <% @farms.each do |farm| %>
+                  <% @barn.clear %>
+                  <% farm.locations.each do |location| %>
+                    <% location.barns.each do |bar| %>
+                      <% @barn << bar.total_pigs %>
+                    <% end %> 
+                  <% end %>
+                  <% tot = @barn.sum %>
+                  <tr class="status-info">
+                    <td><%= link_to farm.name, "/farms/"+farm.id.to_s+"/locations" %></td>
+                    <td><%= farm.farm_owner.name if farm.farm_owner %></td>
+                    <td><%= farm.street_address %></td>
+                    <td><%= farm.city %></td>
+                    <td><%= farm.state %></td>
+                    <td><%= tot %></td>
+                    <% if current_user.is_admin? %>
+                      <td><%= link_to '', edit_farm_path(farm), :class => 'icon-edit' %></td>
+                    <% end %>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,118 @@
+<div class="row-fluid">
+  <div class="span6">
+
+    <div class="box">
+      <div class="box-header">
+        <span class="title">User Details</span>
+      </div>
+
+      <div class="box-content">
+
+        <%= form_for(@user, html: {class: "fill-up"}) do |f| %>
+          <% if @user.errors.any? %>
+            <div id="error_explanation" class="field_with_errors">
+              <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+              <ul>
+                <% @user.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="row-fluid">
+            <div class="span6">
+              <ul class="padded separate-sections">
+                <li class="input">
+                  <%= f.label :first_name %>
+                  <%= f.text_field :first_name %>
+                </li>
+                <li class="input">
+                  <%= f.label :email %>
+                  <%= f.text_field :email %>
+                </li>              
+                <li class="input">
+                  <%= f.label :password %>
+                  <%= f.password_field :password  %>
+                </li>
+                <li class="input">
+                  <%= f.label :mobile_phone %>
+                  <%= f.text_field :mobile_phone %>
+                <li> 
+                <li>
+                  <%= f.label :role %>
+                  <%= f.select :owner_type, User::ROLES %>
+                </li>              
+                <li>
+                  <%= f.label :alert_methods %><p> 
+                  <div class="span3">      
+                    <%= f.check_box :email_alerts_enabled %>  
+                    <%= f.label :email_me %> 
+                  </div>
+                  <div class="span3">  
+                    <%= f.check_box :text_alerts_enabled %>
+                    <%= f.label :text_me %>
+                  </div>
+                  <div class="span3">  
+                    <%= f.check_box :call_alerts_enabled %>
+                    <%= f.label :call_me %>
+                  </div>
+                </li>
+              </ul>                         
+            </div>
+            <div class="span6">
+              <ul class="padded separate-sections">
+                <li class="input">
+                  <%= f.label :last_name %>
+                  <%= f.text_field :last_name %>
+                </li>
+                <li class="input">
+                  <%= f.label :username %>
+                  <%= f.text_field :username %>
+                </li>
+                <li class="input">
+                  <%= f.label :retype_password %>
+                  <%= f.password_field :password_confirmation %>
+                </li>
+                <li> 
+                  <%= f.label :mobile_carrier %>
+                  <%= f.collection_select :mobile_carrier_id, MobileCarrier.all, :id, :name, {} %>
+                </li>
+                <li>
+                  <%= f.label "Managing" %>
+                  <% if @objects %>
+                    <%= select_tag(:managed_object_id, options_for_select(@objects.map{|obj| [obj.name, obj.id] }, @id) ) %>
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+          </div>                     
+              
+          <div class="form-actions">
+            <div class="span4">
+              <%= f.submit "Submit", :class => "btn btn-blue" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('#user_owner_type').change(function() {
+      $.ajax({
+        url: "<%= role_changed_path %>",
+        data: {
+          role : $('#user_owner_type').val()
+        },
+        dataType: "script"
+      });
+    });
+  });
+</script>
+
+

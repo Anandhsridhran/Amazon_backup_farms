@@ -1,0 +1,65 @@
+<div class="row-fluid">
+  <div class="span6">
+
+    <div class="box">
+      <div class="box-header">
+        <span class="title">Barn Details</span>
+      </div>
+
+      <div class="box-content">
+
+        <%= form_for(@barn, html: {class: "fill-up"}) do |f| %>
+          <% if @barn.errors.any? %>
+            <div id="error_explanation" class="field_with_errors">
+              <h2><%= pluralize(@location.errors.count, "error") %> prohibited this barn from being saved:</h2>
+
+              <ul>
+                <% @barn.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="row-fluid">
+            <div class="span6">
+              <ul class="padded separate-sections">
+                <li class="input">
+                  <%= f.label 'Farm' %>
+                  <%= collection_select(nil, :farm_id,  @farms,  :id, :name, {:prompt => "Select a farm"}, {:id => 'farms_select', :class => 'uniform'}) %>
+                </li>
+                <li class="input">
+                  <%= f.label 'Site' %>
+                  <%= f.collection_select(:location_id,  @locations,  :id, :name, {:prompt => "Select a site"}, {:id => 'locations_select', :class => 'uniform'}) %>
+                </li>
+                <li class="input">
+                  <%= f.label 'Barn name' %>
+                  <%= f.text_field :name %> 
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="form-actions">
+            <div class="span4">
+              <%= f.submit "Submit", :class => "btn btn-blue" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('#farms_select').change(function() {
+      $.ajax({
+        url: "<%= update_locations_path %>",
+        data: {
+          farm_id : $('#farms_select').val()
+        },
+        dataType: "script"
+      });
+    });
+  });
+</script>

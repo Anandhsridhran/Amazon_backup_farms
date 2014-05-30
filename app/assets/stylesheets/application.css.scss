@@ -1,0 +1,87 @@
+/*
+ * application.scss
+ *
+ * Important! Do *not* use Sprockets "require" syntax.
+ * Use @import to include other stylesheets and Compass mixins.
+ * What is the problem??
+ */
+
+// Include some nice mixins
+@import "compass";
+
+// Example: import partial stylesheet named "_users.scss"
+// @import "users";
+@import "variables";
+@import "mixin_helpers";
+@import "bootstrap";
+@import "bootstrap-editable-fix";
+@import "bootstrap-editable";
+@import "bootstrap-wysihtml5";
+@import "responsive";
+@import "base";
+@import "tables";
+@import "breadcrumbs";
+@import "dropdowns";
+@import "box";
+@import "gritter";
+@import "ibutton";
+@import "font-awesome";
+@import "font-awesome-mixins";
+@import "buttons";
+@import "sidebar";
+@import "action_nav";
+@import "triangle_button";
+@import "justgage";
+@import "scaffolds";
+@import "badges";
+@import "touchTouch";
+@import "news";
+@import "form_elements";
+@import "navigation";
+@import "responsive768";
+@import "responsive480";
+@import "responsive979";
+/*
+@import "arrow";
+@import "accordion";
+@import "action_nav";
+@import "badges";
+@import "bootstrap-wizard";
+@import "bootstrap_alerts";
+@import "bootstrap_include";
+@import "charts";
+@import "chat-box";
+@import "content_progress";
+@import "controller_admins.css";
+@import "dataTables";
+@import "easy_pie_chart";
+@import "error_pages";
+@import "farms.css";
+@import "fullcalendar";
+@import "icheck_blue";
+@import "locations.css";
+@import "message_box";
+@import "modal";
+@import "news";
+@import "numeric_stats";
+@import "pagination";
+@import "readings.css";
+@import "responsive-tables";
+@import "scaffolds.css";
+@import "scrollable";
+@import "select2";
+@import "select2_overrides";
+@import "sparkline_box";
+@import "stats";
+@import "tables";
+@import "tags";
+@import "tooltips";
+@import "touchTouch";
+@import "triangle_button";
+@import "ui_custom";
+@import "uniform_default";
+@import "users.css";
+@import "validation_engine";
+@import "variables";
+@import "xcharts";
+*/

@@ -1,0 +1,27 @@
+<h1>Listing user_devices</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Regid</th>
+    <th>Is active</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @user_devices.each do |user_device| %>
+  <tr>
+    <td><%= user_device.user_id %></td>
+    <td><%= user_device.regid %></td>
+    <td><%= user_device.is_active %></td>
+    <td><%= link_to 'Show', user_device %></td>
+    <td><%= link_to 'Edit', edit_user_device_path(user_device) %></td>
+    <td><%= link_to 'Destroy', user_device, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New User device', new_user_device_path %>

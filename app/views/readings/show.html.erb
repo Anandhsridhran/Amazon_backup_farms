@@ -1,0 +1,83 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Location:</b>
+  <%= @reading.barn.name %>
+</p>
+<p>
+  <b>Reported at:</b>
+  <%= @reading.reported_at %>
+</p>
+
+<p>
+  <b>System status:</b>
+  <%= @reading.system_status %>
+</p>
+
+<p>
+  <b>Temperatures:</b>
+  <% @reading.temperatures.each do |t| %>
+    <%= t.value.to_s + " " %>
+  <% end %>
+
+<p>
+  <b>Humidity:</b>
+  <%= @reading.humidity %>
+</p>
+
+<p>
+  <b>AC power:</b>
+  <%= @reading.AC_power %>
+</p>
+
+<p>
+  <b>CO:</b>
+  <%= @reading.CO %>
+</p>
+
+<p>
+  <b>Water total:</b>
+  <%= @reading.water_total %>
+</p>
+
+<p>
+  <b>Propane total:</b>
+  <%= @reading.propane_total %>
+</p>
+
+<p>
+  <b>Air quality:</b>
+  <%= @reading.air_quality %>
+</p>
+
+<p>
+  <b>IR feeds:</b>
+  <% @reading.ir_feeds.each do |ir_feed| %>
+    <%= ir_feed.status + " " %>
+  <% end %>
+</p>
+
+<p>
+  <b>Curtain states:</b>
+  <% @reading.curtain_states.each do |cs| %>
+    <%= cs.status + " " %>
+  <% end %>
+</p>
+
+<p>
+  <b>Brooder heaters:</b>
+  <% @reading.brooder_heater_states.each do |bhs| %>
+    <%= bhs.status + " " %>
+  <% end %>
+</p>
+
+<p>
+  <b>Vent fans:</b>
+  <% @reading.vent_fans.each do |vfs| %>
+    <%= vfs.value.to_s + " " %>
+  <% end %>
+</p>
+
+
+<%= link_to 'Edit', edit_reading_path(@reading) %> |
+<%= link_to 'Back', readings_path %>

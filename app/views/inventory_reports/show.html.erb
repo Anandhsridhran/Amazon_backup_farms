@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Barn:</b>
+  <%= @inventory_report.barn_id %>
+</p>
+
+<p>
+  <b>Report date:</b>
+  <%= @inventory_report.report_date %>
+</p>
+
+<p>
+  <b>Total pig deaths:</b>
+  <%= @inventory_report.total_pig_deaths %>
+</p>
+
+<p>
+  <b>Cause of death:</b>
+  <%= @inventory_report.cause_of_death %>
+</p>
+
+<p>
+  <b>Total pigs treated:</b>
+  <%= @inventory_report.total_pigs_treated %>
+</p>
+
+<p>
+  <b>Medicine given:</b>
+  <%= @inventory_report.medicine_given %>
+</p>
+
+<p>
+  <b>Dosage:</b>
+  <%= @inventory_report.dosage %>
+</p>
+
+<p>
+  <b>How administered:</b>
+  <%= @inventory_report.how_administered %>
+</p>
+
+<p>
+  <b>User initials:</b>
+  <%= @inventory_report.user_initials %>
+</p>
+
+
+<%= link_to 'Edit', edit_inventory_report_path(@inventory_report) %> |
+<%= link_to 'Back', inventory_reports_path %>

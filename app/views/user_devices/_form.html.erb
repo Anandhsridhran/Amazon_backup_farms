@@ -1,0 +1,17 @@
+<%= simple_form_for(@user_device) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+
+    <%= f.input :user_id %>
+
+    <%= f.input :regid %>
+
+    <%= f.input :is_active %>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

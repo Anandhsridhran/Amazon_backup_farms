@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  temperature: 1
+  temperature2: 1
+  temperature3: 1
+  humidity: 1
+  water_total: 1
+  propane_total: 1
+  air_quality: MyString
+  IR_feed: MyString
+  curtain_state: MyString
+  location_id: 1
+  reported_at: 2013-07-18 20:04:57
+
+two:
+  temperature: 1
+  temperature2: 1
+  temperature3: 1
+  humidity: 1
+  water_total: 1
+  propane_total: 1
+  air_quality: MyString
+  IR_feed: MyString
+  curtain_state: MyString
+  location_id: 1
+  reported_at: 2013-07-18 20:04:57

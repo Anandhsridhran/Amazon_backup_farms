@@ -1,0 +1,35 @@
+
+
+<div class="span4">
+  <div class="box">
+    <div class="box-header">
+      <span class="title">Temperature / Humidity</span>
+      <ul class="box-toolbar">
+        <li><span class="label label-blue"><%=  @readings.count.to_s  %></span></li>
+      </ul>
+    </div>
+
+    <div class="box-content scrollable" style="height: 552px; overflow-y: auto">
+      <% @readings.each do |reading| %>
+        <% color = "avatar blue" %>
+        <% icon = "icon-ok icon-2x" %>
+
+        <div class="box-section news with-icons">
+          <div class="<%= color %>"><i class="<%= icon %>"></i></div>
+          <div class="news-time">
+            <span><%= reading.created_at.localtime.strftime("%d") %></span>
+            <%= reading.created_at.localtime.strftime("%b") %>
+          </div>
+          <div class="news-content">
+            <div class="news-title"><a href="#"><%= reading.max_temperature.to_s %>&deg; F 
+              / <%= reading.humidity.to_s %>%</a></div>
+            <div class="news-text">
+               <%= reading.created_at.localtime.strftime("%H:%M %p") %>
+            </div>
+          </div>
+        </div> 
+      <% end %>
+    </div>
+  </div>          
+</div>
+

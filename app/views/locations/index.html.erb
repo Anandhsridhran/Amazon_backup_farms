@@ -1,0 +1,56 @@
+<% if current_user.is_admin? %> 
+  <div class="container-fluid padded">
+    <div class="span10"> 
+    <div class="action-nav-normal">
+      
+      <div class="row-fluid">
+        <div class="span2 action-nav-button">
+          <a href="/locations/new" title="New Location">
+            <i class="icon-road"></i>
+            <span>New Site</span>
+          </a>
+          <span class="triangle-button red"><i class="icon-plus"></i></span>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="container-fluid padded">
+    <div class="row-fluid">
+      <div class="span6">
+        <div class="box">
+          <div class="box-content">
+            <table class="table table-normal">
+              <thead>
+                <tr>
+                  <td>Name</td>
+                  <td>Site Manager</td>
+                  <td>Street</td>
+                  <td>City</td>
+                  <td>State</td>
+                  <td>Edit</td>
+                </tr>
+              </thead>
+              <tbody>
+                <% @locations.each do |location| %>
+                  <tr class="status-info">
+                    <td><%= link_to location.name, "/locations/"+location.id.to_s+"/barns" %></td>
+                    <td><%= location.site_manager ? location.site_manager.name : "" %></td>
+                    <td><%= location.street_address %></td>
+                    <td><%= location.city %></td>
+                    <td><%= location.state %></td>
+                    <td><%= link_to '', edit_location_path(location), :class => 'icon-edit' %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  fan: 1
+  speed: 1
+  mode: MyString
+  period: 1
+  location_configuration_id: 1
+
+two:
+  fan: 1
+  speed: 1
+  mode: MyString
+  period: 1
+  location_configuration_id: 1

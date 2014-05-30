@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  inventory_report_id: 1
+  medicine_given: MyString
+  dosage: MyString
+  how_administered: MyString
+  count: 1
+
+two:
+  inventory_report_id: 1
+  medicine_given: MyString
+  dosage: MyString
+  how_administered: MyString
+  count: 1

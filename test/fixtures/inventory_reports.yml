@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  barn_id: 1
+  report_date: 2014-04-09
+  total_pig_deaths: 1
+  cause_of_death: MyString
+  total_pigs_treated: 1
+  medicine_given: MyString
+  dosage: MyString
+  how_administered: MyString
+  user_initials: MyString
+
+two:
+  barn_id: 1
+  report_date: 2014-04-09
+  total_pig_deaths: 1
+  cause_of_death: MyString
+  total_pigs_treated: 1
+  medicine_given: MyString
+  dosage: MyString
+  how_administered: MyString
+  user_initials: MyString

@@ -1,0 +1,70 @@
+<div class="row-fluid">
+  <div class="span6">
+
+    <div class="box">
+      <div class="box-header">
+        <span class="title">Location Details</span>
+      </div>
+
+      <div class="box-content">
+
+        <%= form_for(@location, html: {class: "fill-up"}) do |f| %>
+          <% if @location.errors.any? %>
+            <div id="error_explanation" class="field_with_errors">
+              <h2><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved:</h2>
+
+              <ul>
+                <% @location.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="row-fluid">
+            <div class="span6">
+              <ul class="padded separate-sections">
+                <% if current_user.is_admin? %>
+                  <li>
+                    <%= f.label :farm %>
+                    <%= f.collection_select :farm_id, @farms, :id, :name, {}, {:class => "uniform"} %>
+                  </li>
+                <% else %>
+                  <%= f.hidden_field :farm_id %>
+                <% end %>
+                <li class="input">
+                  <%= f.label :name %>
+                  <%= f.text_field :name %>
+                </li>
+                <li class="input">
+                  <%= f.label :street_address %>
+                  <%= f.text_field :street_address %>
+                </li>
+                <li class="input">
+                  <%= f.label :city %>
+                  <%= f.text_field :city %>
+                </li>
+                <li class="input">
+                  <%= f.label :state_or_province %>
+                  <%= f.text_field :state %>
+                </li>
+                <li class="input">
+                  <%= f.label :postal_code %>
+                  <%= f.text_field :postal_code %>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+          <div class="form-actions">
+            <div class="span4">
+              <%= f.submit "Submit", :class => "btn btn-blue" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+

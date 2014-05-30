@@ -1,0 +1,76 @@
+
+
+<div class="navbar navbar-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+
+      <a class="brand" href="#">Farm Central</a>
+
+      <!-- the new toggle buttons -->
+
+      <ul class="nav pull-right">
+
+        <li class="toggle-primary-sidebar hidden-desktop" data-toggle="collapse" data-target=".nav-collapse-primary"><button type="button" class="btn btn-navbar"><i class="icon-th-list"></i></button></li>
+
+        <li class="hidden-desktop" data-toggle="collapse" data-target=".nav-collapse-top"><button type="button" class="btn btn-navbar"><i class="icon-align-justify"></i></button></li>
+
+      </ul>
+
+      
+
+    </div>
+  </div>
+</div>
+<div class="container">
+  
+<div class="span4 offset4">
+
+
+  <div class="padded">
+    <div class="login box" style="margin-top: 80px;">
+
+      
+
+      <div class="box-header">
+        <span class="title">Login</span>
+      </div>
+
+      <div class="box-content padded">
+        <%= form_for @user_session, url: {action: "create"}, html: {class: "separate-sections"} do |f| %>
+          <% if @user_session.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= 'Login failed - invalid username or password' %></h2>
+            </div>
+          <% end %>
+          <div class="input-prepend">
+          <span class="add-on" href="#">
+            <i class="icon-user"></i>
+          </span>
+            <%= f.text_field :username, :placeholder => "username" %>
+          </div>
+
+          <div class="input-prepend">
+          <span class="add-on" href="#">
+            <i class="icon-key"></i>
+          </span>
+            <%= f.password_field :password, :placeholder => "password" %>
+          </div>
+
+          <div>
+            <%= f.submit "Login", class: "btn btn-blue btn-block" %>
+          </div>
+        <% end %>
+
+        <div>
+          <a href="sign_up.html">
+              Don't have an account? <strong>Sign Up</strong>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+</div>
+

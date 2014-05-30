@@ -1,0 +1,54 @@
+<% if current_user.is_admin? %> 
+  <div class="container-fluid padded">
+    <div class="span10"> 
+    <div class="action-nav-normal">
+      
+      <div class="row-fluid">
+        <div class="span2 action-nav-button">
+          <a href="/barns/new" title="New Barn">
+            <i class="icon-building"></i>
+            <span>New Barn</span>
+          </a>
+          <span class="triangle-button red"><i class="icon-plus"></i></span>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="container-fluid padded">
+    <div class="row-fluid">
+      <div class="span6">
+        <div class="box">
+          <div class="box-content">
+            <table class="table table-normal">
+              <thead>
+                <tr>
+                  <td>Name</td>
+                  <td>Barn Manager</td>
+                  <td>Settings</td>
+                </tr>
+              </thead>
+              <tbody>
+                <% @barns.each do |barn| %>
+                  <tr class="status-info">
+                    <td><%= link_to barn.name, barn %></td>
+                    <td><%= barn.barn_manager ? barn.barn_manager.name : "" %></td>
+                    <% if barn.barn_configuration %>
+                      <td><%= link_to '', edit_barn_configuration_path(barn.barn_configuration), :class => 'icon-cog' %></td>
+                    <% else %>
+                      <td></td>
+                    <% end %>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+

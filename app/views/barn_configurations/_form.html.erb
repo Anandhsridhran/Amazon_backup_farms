@@ -1,0 +1,90 @@
+<div class="row-fluid">
+  <div class="span6">
+
+    <div class="box">
+      <div class="box-header">
+        <span class="title">Update settings</span>
+      </div>
+
+      <div class="box-content">
+
+
+        <%= form_for(@barn_configuration) do |f| %>
+          <% if @barn_configuration.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@barn_configuration.errors.count, "error") %> prohibited this barn_configuration from being saved:</h2>
+
+              <ul>
+              <% @barn_configuration.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="row-fluid">
+            <div class="span6">
+              <ul class="padded separate-sections">
+                <li class="input">
+                  <%= f.label :building_temperature %>
+                  <%= f.number_field :building_temperature %>
+                </li>
+                
+                <b>Zone temperatures</b>
+                <p><p><p>
+                <% i = 1 %>
+                <%= f.fields_for :zone_temperatures do |builder| %>
+                  <%= builder.label "Zone "+i.to_s %>
+                  <%= builder.number_field :temperature %>
+                  <% i += 1 %>
+                <% end %>
+
+                <p>
+                <b>Curtain controls</b>
+                <p><p><p>
+                <% i = 1 %>
+                <%= f.fields_for :curtain_controls do |builder| %>
+                  <%= builder.label "Curtain "+i.to_s+" action" %>
+                  <%= builder.select :action, CurtainControl::ACTIONS  %>
+                  <% i += 1 %>
+                <% end %>
+
+                <p>
+                <b>Heater controls</b>
+                <p><p><p>
+                <% i = 1 %>
+                <%= f.fields_for :heater_controls do |builder| %>
+                  <%= builder.label "Heater "+i.to_s+" mode" %>
+                  <%= builder.select :mode, HeaterControl::MODES  %>
+                  <%= builder.label "Heater "+i.to_s+" action" %>
+                  <%= builder.select :action, HeaterControl::ACTIONS  %>
+                  <% i += 1 %>
+                <% end %>
+
+                <p>
+                <b>Vent fan controls</b>
+                <p><p><p>
+                <% i = 1 %>
+                <%= f.fields_for :vent_fan_controls do |builder| %>
+                  <%= builder.label "Vent fan "+i.to_s+" mode" %>
+                  <%= builder.select :mode, HeaterControl::MODES  %>
+                  <%= builder.label "Vent fan "+i.to_s+" period" %>
+                  <%= builder.number_field :period %>
+                  <%= builder.label "Vent fan "+i.to_s+" speed" %>
+                  <%= builder.number_field :speed %>
+                  <% i += 1 %>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+          <div class="form-actions">
+            <div class="span4">
+              <%= f.submit "Submit", :class => "btn btn-blue" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,139 @@
+<div class="container-fluid padded">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="box">
+          <div class="box-content">
+            <table class="table table-normal">
+              <thead>
+                <tr>
+                  <td>Inventory</td>
+                  <td>Date</td>
+                  <td>Pig Deaths</td>
+                  <td>Sick Pigs</td>
+                  <td>Last Shipment</td>
+                  <td>Date</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><%= @total_pigs %></td>
+                  <td><%= @inventory_report.report_date %></td>
+                  <td><%= @inventory_report.pig_deaths.count %></td>
+                  <td><%= @inventory_report.pig_treatments.count %></td>
+                  <td><%= @shipment.total_pigs %></td>
+                  <td><%= @shipment.shipment_date %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="container-fluid padded">
+    <div class="row-fluid">
+      <div class="span3">
+        <div class="box">
+          <div class="box-content">
+            <table class="table table-normal">
+              <thead>
+                <tr>
+                  <td>Last Reading</td>
+                  <td>Value</td>
+                </tr>
+              </thead>
+              <tbody>
+                <% if @reading %>
+                  <% status_class = status_css_class(@reading.system_status) %>
+                  <tr class=<%= status_class %>>
+                    <td>Time</td>
+                    <td><%= @reading.created_at.strftime("%Y-%b-%d %H:%M") %></td>
+                  </tr>
+                  <tr class=<%= status_class %>>
+                    <td>System status</td><td><%= @reading.system_status %>
+                  </tr>
+
+                  <% i = 0 %>
+                  <% total_temp = 0 %>
+                  <% @reading.temperatures.each do |t| %>
+                    <% i += 1 %>
+                    <% total_temp += t.value %>
+                    <tr class="status-success">
+                      <td><%= "Temperature "+i.to_s %></td>
+                      <td><%= t.value.to_s %>&deg; F</td>
+                    </tr>
+                  <% end %>
+
+                  <tr class="status-success">
+                    <td>Humidity</td><td><%= @reading.humidity.to_s %>%</td>
+                  </tr>
+                  <% status_class = status_css_class(@reading.air_quality) %>
+                  <tr class=<%= status_class %>>
+                    <td>Air quality</td><td><%= @reading.air_quality %></td>
+                  </tr>
+                  <% status_class = status_css_class(@reading.CO) %>
+                  <tr class=<%= status_class %>>
+                    <td>CO level</td><td><%= @reading.CO %></td>
+                  </tr>
+                  <% status_class = status_css_class(@reading.AC_power) %>
+                  <tr class=<%= status_class %>>
+                    <td>AC power</td><td><%= @reading.AC_power %></td>
+                  </tr>
+
+                  <% i = 0 %>
+                  <% @reading.ir_feeds.each do |ir| %>
+                    <% i += 1 %>
+                    <% status_class = status_css_class(ir.status) %>
+                    <tr class=<%= status_class %>>
+                      <td><%= "IR feed "+i.to_s %></td>
+                      <td><%= ir.status %></td>
+                    </tr>
+                  <% end %>
+
+                  <% i = 0 %>
+                  <% @reading.brooder_heater_states.each do |bh| %>
+                    <% i += 1 %>
+                    <% status_class = status_css_class(bh.status) %>
+                    <tr class=<%= status_class %>>
+                      <td><%= "Brooder heater "+i.to_s %></td>
+                      <td><%= bh.status %></td>
+                    </tr>
+                  <% end %>
+
+                  <% i = 0 %>
+                  <% @reading.curtain_states.each do |cs| %>
+                    <% i += 1 %>
+                    <tr class="status-success">
+                      <td><%= "Curtain state "+i.to_s %></td>
+                      <td><%= cs.status %></td>
+                    </tr>
+                  <% end %>
+
+                  <% i = 0 %>
+                  <% @reading.vent_fans.each do |vf| %>
+                    <% i += 1 %>
+                    <tr class="status-success">
+                      <td><%= "Vent fan "+i.to_s %></td>
+                      <td><%= vf.value.to_s %></td>
+                    </tr>
+                  <% end %>
+                <% else %>
+                  <% avg_temp = 0 %>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+          
+        </div>
+      </div>
+      
+      <%= render 'event_reports' %>
+      <%= render 'readings' %>
+
+      
+    </div>
+</div>
+
+
+
+                

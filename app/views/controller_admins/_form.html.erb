@@ -1,0 +1,47 @@
+<div class="row-fluid">
+  <div class="span6">
+
+    <div class="box">
+      <div class="box-header">
+        <span class="title">Controller Admin Details</span>
+      </div>
+
+      <div class="box-content">
+
+        <%= form_for(@controller_admin, html: {class: "fill-up"}) do |f| %>
+          <% if @controller_admin.errors.any? %>
+            <div id="error_explanation" class="field_with_errors">
+              <h2><%= pluralize(@controller_admin.errors.count, "error") %> prohibited this controller admin from being saved:</h2>
+
+              <ul>
+                <% @controller_admin.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="row-fluid">
+            <div class="span6">
+              <ul class="padded separate-sections">
+                <li class="input">
+                  <%= f.label 'Barn: '+@controller_admin.barn.name %>
+                  <%= f.hidden_field :barn_id %>
+                </li>
+                <%= f.fields_for :user do |user_fields| %>
+                  <%= render 'users/user_fields', :f => user_fields %>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+          <div class="form-actions">
+            <div class="span4">
+              <%= f.submit "Submit", :class => "btn btn-blue" %>
+            </div>
+          </div> 
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,36 @@
+<div class="span4">
+  <div class="box">
+    <div class="box-header">
+      <span class="title">Events</span>
+      <ul class="box-toolbar">
+        <li><span class="label label-blue"><%= @event_reports.count.to_s %></span></li>
+      </ul>
+    </div>
+
+    <div class="box-content scrollable" style="height: 552px; overflow-y: auto">
+      <% @event_reports.each do |event| %>
+        <% if event.normal? %>
+          <% color = "avatar blue" %>
+          <% icon = "icon-ok icon-2x" %>
+        <% else %>
+          <% color = "avatar red" %>
+          <% icon = "icon-fire icon-2x" %>
+        <% end %>
+
+        <div class="box-section news with-icons">
+          <div class="<%= color %>"><i class="<%= icon %>"></i></div>
+          <div class="news-time">
+            <span><%= event.created_at.localtime.strftime("%d") %></span>
+            <%= event.created_at.localtime.strftime("%b") %>
+          </div>
+          <div class="news-content">
+            <div class="news-title"><a href="#"><%= event.description %></a></div>
+            <div class="news-text">
+              <%= event.barn.name %> - <%= event.created_at.localtime.strftime("%H:%M %p") %>
+            </div>
+          </div>
+        </div> 
+      <% end %>
+    </div>
+  </div>          
+</div>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  zone: 1
+  temperature: 1
+  location_configuration_id: 1
+
+two:
+  zone: 1
+  temperature: 1
+  location_configuration_id: 1

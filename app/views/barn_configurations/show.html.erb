@@ -1,0 +1,75 @@
+<div class="container-fluid padded">
+  <div class="row-fluid">
+    <div class="span3">
+      <div class="box">
+        <div class="box-content">
+          <table class="table table-normal">
+            <thead>
+              <tr>
+                <td>Setting</td>
+                <td>Value</td>
+              </tr>
+            </thead>
+            <tbody>
+	            <tr class="status-info">
+	             	<td>Building temperature</td>
+	             	<td><%= @bc.building_temperature %>
+	            </tr>
+              <% @bc.zone_temperatures.each do |zt| %>
+                <tr class="status-info">
+                  <td><%= "Zone temperature "+zt.zone.to_s %></td>
+                  <td><%= zt.temperature.to_s %>&deg; C</td>
+                </tr>
+              <% end %>
+              <% @bc.heater_controls.each do |hc| %>
+                <tr class="status-info">
+                  <td><%= "Heater "+hc.heater.to_s+" action" %></td>
+                  <td><%= hc.action %></td>
+                </tr>
+                <tr class="status-info">
+                  <td><%= "Heater "+hc.heater.to_s+" mode" %></td>
+                  <td><%= hc.mode %></td>
+                </tr>
+                <tr class="status-info">
+                  <td><%= "Heater "+hc.heater.to_s+" period" %></td>
+                  <td><%= hc.period.to_s %></td>
+                </tr>
+              <% end %>
+              <% @bc.curtain_controls.each do |cc| %>
+                <tr class="status-info">
+                  <td><%= "Curtain "+cc.curtain.to_s+" action" %></td>
+                  <td><%= cc.action %></td>
+                </tr>
+              <% end %>
+              <% @bc.heater_controls.each do |hc| %>
+                <tr class="status-info">
+                  <td><%= "Heater "+hc.heater.to_s+" action" %></td>
+                  <td><%= hc.action %></td>
+                </tr>
+                <tr class="status-info">
+                  <td><%= "Heater "+hc.heater.to_s+" mode" %></td>
+                  <td><%= hc.mode %></td>
+                </tr>
+               <% end %>
+               <% @bc.vent_fan_controls.each do |vfc| %>
+                <tr class="status-info">
+                  <td><%= "Vent fan "+vfc.fan.to_s+" mode" %></td>
+                  <td><%= vfc.mode %></td>
+                </tr>
+                <tr class="status-info">
+                  <td><%= "Vent fan "+vfc.fan.to_s+" period" %></td>
+                  <td><%= vfc.period %></td>
+                </tr>
+                <tr class="status-info">
+                  <td><%= "Vent fan "+vfc.fan.to_s+" speed" %></td>
+                  <td><%= vfc.speed.to_s %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  building_temperature: 
+  water_sensor_reset: false
+  propane_sensor_reset: false
+  location_id: 1
+
+two:
+  building_temperature: 
+  water_sensor_reset: false
+  propane_sensor_reset: false
+  location_id: 1

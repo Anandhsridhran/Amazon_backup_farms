@@ -1,0 +1,47 @@
+<div class="row-fluid">
+  <div class="span6">
+
+    <div class="box">
+      <div class="box-header">
+        <span class="title">Hog Owner Details</span>
+      </div>
+
+      <div class="box-content">
+
+        <%= form_for(@hog_owner, html: {class: "fill-up"}) do |f| %>
+          <% if @hog_owner.errors.any? %>
+            <div id="error_explanation" class="field_with_errors">
+              <h2><%= pluralize(@hog_owner.errors.count, "error") %> prohibited this hog_owner from being saved:</h2>
+
+              <ul>
+                <% @hog_owner.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="row-fluid">
+            <div class="span6">
+              <ul class="padded separate-sections">
+                <%= label_tag "Farms supplied" %>
+                <% @farms.all.each do |farm| %>
+                  <div>
+                    <%= check_box_tag 'hog_owner[farm_ids][]', farm.id, @hog_owner.farms.include?(farm) %>
+                    <%= farm.name %>
+                  </div>
+                <% end %>
+                <%= f.hidden_field :user_id %>
+              </ul>
+            </div>
+          </div>
+          <div class="form-actions">
+            <div class="span4">
+              <%= f.submit "Submit", :class => "btn btn-blue" %>
+            </div>
+          </div> 
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

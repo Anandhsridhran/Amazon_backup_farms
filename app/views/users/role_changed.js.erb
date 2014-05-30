@@ -1,0 +1,6 @@
+<% if @managed_objects.length > 0 %>
+  $('#managed_object_id').html("<%= escape_javascript(options_for_select(@managed_objects)) %>");
+  $('#managed_object_id').show();
+<% else %>
+  $('#managed_object_id').hide();
+<% end %>

@@ -1,0 +1,33 @@
+<%= form_for(@event_report) do |f| %>
+  <% if @event_report.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event_report.errors.count, "error") %> prohibited this event_report from being saved:</h2>
+
+      <ul>
+      <% @event_report.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.collection_select :location_id, @locations, :id, :name %>
+  </div>
+  <div class="field">
+    <%= f.label :event %><br />
+    <%= f.collection_select :event_code, EventReport::STATUSES, :first, :second %>
+  </div>
+  <div class="field">
+    <%= f.label :input_value %><br />
+    <%= f.number_field :input_value %>
+  </div>
+  <div class="field">
+    <%= f.label :output_value %><br />
+    <%= f.number_field :output_value %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

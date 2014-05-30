@@ -1,0 +1,42 @@
+<%= form_for(@reading) do |f| %>
+  <% if @reading.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reading.errors.count, "error") %> prohibited this reading from being saved:</h2>
+
+      <ul>
+      <% @reading.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :reported_at %><br />
+    <%= f.datetime_select :reported_at %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.collection_select :location_id, @locations, :id, :name %>
+  </div>
+  <div class="field">
+    <%= f.label :humidity %><br />
+    <%= f.number_field :humidity %>
+  </div>
+  <div class="field">
+    <%= f.label :water_total %><br />
+    <%= f.number_field :water_total %>
+  </div>
+  <div class="field">
+    <%= f.label :propane_total %><br />
+    <%= f.number_field :propane_total %>
+  </div>
+  <div class="field">
+    <%= f.label :air_quality %><br />
+    <%= f.text_field :air_quality %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

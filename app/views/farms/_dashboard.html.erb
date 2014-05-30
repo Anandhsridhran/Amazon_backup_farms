@@ -1,0 +1,36 @@
+<div class="span6">
+  <div class="box">
+    <div class="box-header">
+      <span class="title">Farms</span>
+    </div>
+    <div class="box-content">
+      <table class="table table-normal">
+        <thead>
+          <tr>
+            <td>Name</td>
+            <td>Status</td>
+            <td>City</td>
+            <td>Owner</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @farms.each do |farm| %>
+            <% if farm.system_status == "OK" %>
+              <% icon_color = "status-success" %>
+              <% icon = "icon-ok icon-2x" %>
+            <% else %>
+              <% icon_color = "status-error" %>
+              <% icon = "icon-fire icon-2x" %>
+            <% end %>
+            <tr class=<%= icon_color %> >
+              <td><%= link_to farm.name, "/dashboard?farm_id="+farm.id.to_s %></td>
+              <td class="icon"><i class="<%= icon %>"></td>
+              <td><%= farm.city + ", " + farm.state %></td>
+              <td><%= farm.farm_owner ? farm.farm_owner.name : "" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

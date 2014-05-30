@@ -1,0 +1,63 @@
+<% if @current_user.is_admin? %>
+  
+  <div class="container-fluid padded">
+  <div class="span10"> 
+  <div class="action-nav-normal">
+    
+    <div class="row-fluid">
+      <div class="span2 action-nav-button">
+        <a href="/users/new" title="New User">
+          <i class="icon-user"></i>
+          <span>New User</span>
+        </a>
+        <span class="triangle-button red"><i class="icon-plus"></i></span>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+<% end %>
+
+
+<div class="span8">
+<div class="box">
+  <div class="box-header">
+    <span class="title">Users</span>
+  </div>
+  <div class="box-content">
+    <table class="table table-normal">
+      <thead>
+      <tr>
+        <td>Name</td>
+        <td>Username</td>
+        <td>Role</td>
+        <% if current_user.is_admin? %>
+          <td style="width: 40px">Edit</td>
+          <!-- <td style="width: 40px">Del</td> -->
+        <% end %>
+      </tr>
+      </thead>
+
+      <tbody>
+        <% @users.each do |user| %>
+          <tr class="status-pending">
+            <td><%= link_to user.name, user %></td>
+            <td><%=  user.username %></td>
+            <td><%= user.owner_type %></td>
+            <% if current_user.is_admin? %> 
+              <td><%= link_to '', edit_user_path(user), :class => 'icon-edit' %></td>
+              <!-- <td><%= link_to '', user_path(user), :class => 'icon-remove-sign', :confirm => 'Delete this user?', :method => :delete %></td> -->
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+
+
+
+      
+

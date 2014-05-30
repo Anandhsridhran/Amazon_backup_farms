@@ -1,0 +1,29 @@
+<h1>Listing barn_configurations</h1>
+
+<table>
+  <tr>
+    <th>Building temperature</th>
+    <th>Water sensor reset</th>
+    <th>Propane sensor reset</th>
+    <th>Barnn</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @barn_configurations.each do |barn_configuration| %>
+  <tr>
+    <td><%= barn_configuration.building_temperature %></td>
+    <td><%= barn_configuration.water_sensor_reset %></td>
+    <td><%= barn_configuration.propane_sensor_reset %></td>
+    <td><%= barn_configuration.barn_id %></td>
+    <td><%= link_to 'Show', barn_configuration %></td>
+    <td><%= link_to 'Edit', edit_barn_configuration_path(barn_configuration) %></td>
+    <td><%= link_to 'Destroy', barn_configuration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Barn configuration', new_barn_configuration_path %>

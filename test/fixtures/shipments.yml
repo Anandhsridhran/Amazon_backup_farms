@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  barn_id: 1
+  shipment_date: 2014-04-08
+  total_pigs: 1
+  total_doa: 1
+  pig_supplier: MyString
+
+two:
+  barn_id: 1
+  shipment_date: 2014-04-08
+  total_pigs: 1
+  total_doa: 1
+  pig_supplier: MyString

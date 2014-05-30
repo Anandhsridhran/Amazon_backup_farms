@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Barn:</b>
+  <%= @shipment.barn_id %>
+</p>
+
+<p>
+  <b>Shipment date:</b>
+  <%= @shipment.shipment_date %>
+</p>
+
+<p>
+  <b>Total pigs:</b>
+  <%= @shipment.total_pigs %>
+</p>
+
+<p>
+  <b>Total doa:</b>
+  <%= @shipment.total_doa %>
+</p>
+
+<p>
+  <b>Pig supplier:</b>
+  <%= @shipment.pig_supplier %>
+</p>
+
+
+<%= link_to 'Edit', edit_shipment_path(@shipment) %> |
+<%= link_to 'Back', shipments_path %>

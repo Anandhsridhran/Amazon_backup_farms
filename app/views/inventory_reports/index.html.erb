@@ -1,0 +1,39 @@
+<h1>Listing inventory_reports</h1>
+
+<table>
+  <tr>
+    <th>Barn</th>
+    <th>Report date</th>
+    <th>Total pig deaths</th>
+    <th>Cause of death</th>
+    <th>Total pigs treated</th>
+    <th>Medicine given</th>
+    <th>Dosage</th>
+    <th>How administered</th>
+    <th>User initials</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @inventory_reports.each do |inventory_report| %>
+  <tr>
+    <td><%= inventory_report.barn_id %></td>
+    <td><%= inventory_report.report_date %></td>
+    <td><%= inventory_report.total_pig_deaths %></td>
+    <td><%= inventory_report.cause_of_death %></td>
+    <td><%= inventory_report.total_pigs_treated %></td>
+    <td><%= inventory_report.medicine_given %></td>
+    <td><%= inventory_report.dosage %></td>
+    <td><%= inventory_report.how_administered %></td>
+    <td><%= inventory_report.user_initials %></td>
+    <td><%= link_to 'Show', inventory_report %></td>
+    <td><%= link_to 'Edit', edit_inventory_report_path(inventory_report) %></td>
+    <td><%= link_to 'Destroy', inventory_report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Inventory report', new_inventory_report_path %>

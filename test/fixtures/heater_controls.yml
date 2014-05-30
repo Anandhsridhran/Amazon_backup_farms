@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  heater: 1
+  action: MyString
+  mode: MyString
+  period: 1
+  location_configuration_id: 1
+
+two:
+  heater: 1
+  action: MyString
+  mode: MyString
+  period: 1
+  location_configuration_id: 1

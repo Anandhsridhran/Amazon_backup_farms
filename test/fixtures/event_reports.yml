@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  location_id: 1
+  input_value: 1
+  output_value: 1
+  event_description: MyString
+  event_code: 1
+
+two:
+  location_id: 1
+  input_value: 1
+  output_value: 1
+  event_description: MyString
+  event_code: 1

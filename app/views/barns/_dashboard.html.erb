@@ -1,0 +1,58 @@
+<div class="span8">
+  <div class="box">
+    <div class="box-header">
+      <span class="title">Barns</span>
+    </div>
+    <div class="box-content">
+      <table class="table table-normal">
+        <thead>
+          <tr>
+            <td>Name</td>
+            <td>Status</td>
+            <td>Last updated</td>
+            <td>Temperature</td>
+            <td>Humidity</td>
+            <td>Air quality</td>
+            <td>CO</td>
+            <td>Inventory</td>
+            <td>Last Update</td>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @barns.each do |barn| %>
+            <% inventory_report = barn.inventory_reports.last %>
+            <% pigs = barn.total_pigs %>
+            <% if barn.readings.count > 0 %>
+              <% reading = barn.readings.last %>
+              <% status = reading.system_status %>
+              <% if status == "OK" %>
+                <% icon_color = "status-success" %>
+                <% icon = "icon-ok icon-2x" %>
+              <% else %>
+                <% icon_color = "status-error" %>
+                <% icon = "icon-fire icon-2x" %>
+              <% end %>
+            <% else %>
+              <% reading = nil %>
+              <% icon_color = "status-info" %>
+              <% icon = "icon-question-sign icon-2x" %>
+            <% end %>
+            <tr class=<%= icon_color %> >
+              <td><%= link_to barn.name, barn %></td>
+              <td class="icon"><i class="<%= icon %>"></td>
+              <td><%= reading ? reading.updated_at.utc.strftime("%H:%M UTC %b-%d") + " (" + time_ago_in_words(reading.updated_at) + " ago)" : "N/A" %></td>
+              <td><%= reading && reading.temperatures.any? ? reading.temperatures[0].value.to_s : "N/A" %>&deg; C</td>
+              <td><%= reading ? reading.humidity.to_s + "%" : "N/A" %></td>
+              <td><%= reading ? reading.air_quality : "N/A" %></td>
+              <td><%= reading ? reading.CO : "N/A" %></td>
+              <td><%= pigs %></td>
+              <td><%= inventory_report ? inventory_report.report_date : "N/A" %></td>
+              <td><%= link_to 'More..', barn %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

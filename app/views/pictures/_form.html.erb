@@ -1,0 +1,65 @@
+<div class="row-fluid">
+  <div class="span6">
+
+    <div class="box">
+      <div class="box-header">
+        <span class="title">Picture</span>
+      </div>
+
+      <div class="box-content">
+
+        <%= form_for(@picture, html: { :multipart => true, class: "fill-up"}) do |f| %>
+          <% if @picture.errors.any? %>
+            <div id="error_explanation" class="field_with_errors">
+              <h2><%= pluralize(@picture.errors.count, "error") %> prohibited this picture from being saved:</h2>
+
+              <ul>
+                <% @picture.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="row-fluid">
+            <div class="span6">
+              <ul class="padded separate-sections"> 
+                <% if current_user.is_admin? %>
+                  <li>
+                    <%= f.label :farm %>
+                    <%= f.collection_select :farm_id, @farms, :id, :name, {}, {:class => "uniform"} %>
+                  </li>
+                <% else %>
+                  <%= f.hidden_field :farm_id %>
+                <% end %>
+                <li class="input">
+                  <%= f.label :upload_photo %>
+                  <%= f.file_field :photo, {:style => "display:none"} %>
+                  <div class="input-append">
+                    <%= text_field_tag "photoCover" %>
+                    <a class="btn btn-blue" onclick="$('input[id=picture_photo]').click();">Browse</a>
+                  </div>
+                </li>          
+                <li class="input">
+                  <%= f.label :caption %>
+                  <%= f.text_field :caption %>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="form-actions">
+            <div class="span4">
+              <%= f.submit "Submit", :class => "btn btn-blue" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $('input[id=picture_photo]').change(function() {
+  $('#photoCover').val($(this).val());
+});
+</script>

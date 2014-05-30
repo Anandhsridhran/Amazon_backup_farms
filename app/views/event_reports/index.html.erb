@@ -1,0 +1,25 @@
+<h1>Listing event_reports</h1>
+
+<table>
+  <tr>
+    <th>Reported at</th>
+    <th>Event description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @event_reports.each do |event_report| %>
+  <tr>
+    <td><%= event_report.created_at %></td>
+    <td><%= event_report.description %></td>
+    <td><%= link_to 'Show', event_report %></td>
+    <td><%= link_to 'Edit', edit_event_report_path(event_report) %></td>
+    <td><%= link_to 'Destroy', event_report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Event report', new_event_report_path %>

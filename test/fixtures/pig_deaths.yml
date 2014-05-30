@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  inventory_report_id: 1
+  cause: MyString
+  count: MyString
+
+two:
+  inventory_report_id: 1
+  cause: MyString
+  count: MyString
